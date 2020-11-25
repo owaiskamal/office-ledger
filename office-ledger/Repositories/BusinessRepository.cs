@@ -92,5 +92,42 @@ namespace office_ledger.Repositories
             var conn = new OracleConnection(connectionString);
             return conn;
         }
+
+        public string InsertBusinessUnits(BusinessUnits businessUnits)
+        {
+            string result;
+            OracleDataAdapter obj_ORCL = new OracleDataAdapter("CROL_DML_BussUnit_ST", this.GetConnection().ConnectionString);
+            obj_ORCL.SelectCommand.CommandType = CommandType.StoredProcedure;
+            obj_ORCL.SelectCommand.BindByName = true;
+            obj_ORCL.SelectCommand.Parameters.Add("p_busunit", businessUnits.busUnit);
+            obj_ORCL.SelectCommand.Parameters.Add("p_butitle", businessUnits.busTitle);
+            obj_ORCL.SelectCommand.Parameters.Add("p_buname", businessUnits.busName);
+            obj_ORCL.SelectCommand.Parameters.Add("p_user_cd", businessUnits.user_Cd);
+            //obj_ORCL.SelectCommand.Parameters.Add("p_insdate", "");
+            obj_ORCL.SelectCommand.Parameters.Add("p_rowid", "");
+            obj_ORCL.SelectCommand.Parameters.Add("p_upduser_cd","");
+            obj_ORCL.SelectCommand.Parameters.Add("p_action", "I");
+            obj_ORCL.SelectCommand.Parameters.Add("p_dataset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+            DataTable ins_Dt = new DataTable();
+            try
+            {
+                obj_ORCL.Fill(ins_Dt);
+                result = Newtonsoft.Json.JsonConvert.SerializeObject(ins_Dt);
+            }
+            catch (Exception ex)
+            {
+
+                result = Newtonsoft.Json.JsonConvert.SerializeObject(ex.Message);
+            }
+            finally
+            {
+
+                obj_ORCL.Dispose();
+                ins_Dt.Dispose();
+            }
+
+            return result;
+
+        }
     }
 }
