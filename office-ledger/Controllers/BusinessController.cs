@@ -66,5 +66,21 @@ namespace office_ledger.Controllers
                 return Ok(result);
             }
         }
+
+        [Route("api/UpdateBusinessUnits")]
+        [HttpPost]
+
+        public ActionResult UpdateBusinessUnits([FromBody] BusinessUnits busUnits)
+        {
+            var result = businessUnits.UpdateBusinessUnits(busUnits);
+            if(result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(result);
+            }
+        }
     }
 }
