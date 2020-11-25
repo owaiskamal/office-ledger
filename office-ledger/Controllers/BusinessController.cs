@@ -20,6 +20,7 @@ namespace office_ledger.Controllers
         }
 
         [Route("api/GetBusinesses")]
+        [HttpGet]
         public ActionResult GetBussinesses()
         {
             var result = businessUnits.GetBusinessUnits();
@@ -44,6 +45,23 @@ namespace office_ledger.Controllers
                 return NotFound();
             }
             else
+            {
+                return Ok(result);
+            }
+        }
+
+        [Route ("api/InsertBusinessUnits")]
+        [HttpPost]
+        public ActionResult InserBusinessUnits([FromBody] BusinessUnits busUnits)
+        {
+            
+            var result = businessUnits.InsertBusinessUnits(busUnits);
+            if(result == null)
+            {
+                return NotFound();
+            }
+            else
+
             {
                 return Ok(result);
             }
