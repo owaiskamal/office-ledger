@@ -12,6 +12,7 @@ namespace office_ledger.Repositories
         String GetBusinessUnitById(BusinessUnits businessUnits);
 
         String InsertBusinessUnits(BusinessUnits businessUnits);
+        String UpdateBusinessUnits(BusinessUnits businessUnits);
     }
 
 
