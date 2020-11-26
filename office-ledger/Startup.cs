@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using office_ledger.Models;
 using office_ledger.Repositories;
 
 namespace office_ledger
@@ -27,6 +28,7 @@ namespace office_ledger
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IBusinessUnits, BusinessRepository>();
+            services.AddTransient<ICostCenter, CostCenterRepository>();
             services.AddSingleton(Configuration);
             services.AddControllers();
 
