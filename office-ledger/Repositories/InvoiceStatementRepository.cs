@@ -20,16 +20,60 @@ namespace office_ledger.Repositories
         public string getInvBusinessUnits()
         {
             string result;
-            InvoiceStatement invoiceStatement = new InvoiceStatement();
-            result = AllStored("BU", invoiceStatement);
+
+            //invoiceStatement.
+            result = AllStored("BU", null);
             return result;
         }
 
 
 
-        public String AllStored(String action , InvoiceStatement invoiceStatement)
+        public String AllStored(String action, InvoiceStatement invoiceStatement)
         {
             string result;
+            if (invoiceStatement == null)
+            {
+                
+                OracleDataAdapter obj_ORCL = new OracleDataAdapter("Crol_dml_inv_st", this.GetConnection().ConnectionString);
+                obj_ORCL.SelectCommand.CommandType = CommandType.StoredProcedure;
+                obj_ORCL.SelectCommand.BindByName = true;
+                obj_ORCL.SelectCommand.Parameters.Add("p_custid", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_invoiceno", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_invoicedate", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_crfno", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_orderno", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_invamount", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_gstamount", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_totalamount", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_recamount", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_busunit", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_costid", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_remarks", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_usercd", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_updusercd", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_action", action);
+                obj_ORCL.SelectCommand.Parameters.Add("p_dataset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                DataTable bu_dt = new DataTable();
+                try
+                {
+                    obj_ORCL.Fill(bu_dt);
+                    result = Newtonsoft.Json.JsonConvert.SerializeObject(bu_dt);
+                }
+                catch (Exception ex)
+                {
+
+                    result = Newtonsoft.Json.JsonConvert.SerializeObject(ex.Message);
+                }
+                finally
+                {
+                    bu_dt.Dispose();
+                    obj_ORCL.Dispose();
+                }
+            }
+            else
+            {
+
+            
             OracleDataAdapter obj_ORCL = new OracleDataAdapter("Crol_dml_inv_st", this.GetConnection().ConnectionString);
             obj_ORCL.SelectCommand.CommandType = CommandType.StoredProcedure;
             obj_ORCL.SelectCommand.BindByName = true;
@@ -65,6 +109,7 @@ namespace office_ledger.Repositories
                 bu_dt.Dispose();
                 obj_ORCL.Dispose();
             }
+            }
             return result;
         }
 
@@ -93,24 +138,22 @@ namespace office_ledger.Repositories
         public string getInvCustID()
         {
             string result;
-            InvoiceStatement invoice = new InvoiceStatement();
-            result = AllStored("CID", invoice);
+
+            result = AllStored("CID", null);
             return result;
         }
 
         public string getInvoiceStatement()
         {
             string result;
-            InvoiceStatement invoice = new InvoiceStatement();
-            result = AllStored("SA", invoice);
+            result = AllStored("SA", null);
             return result;
         }
 
         public string getInvCostCenters()
         {
             string result;
-            InvoiceStatement invoice = new InvoiceStatement();
-            result = AllStored("CC", invoice);
+            result = AllStored("CC", null);
             return result;
         }
     }
