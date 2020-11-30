@@ -75,7 +75,7 @@ namespace office_ledger.Repositories
             return conn;
         }
 
-        public string insertInvBusinessUnits(InvoiceStatement invoiceStatement)
+        public string insertInvoiceStatement(InvoiceStatement invoiceStatement)
         {
             string result;
             result = AllStored("I", invoiceStatement);
@@ -83,17 +83,26 @@ namespace office_ledger.Repositories
             return result;
         }
 
-        public string updateInvBusinessUnits(InvoiceStatement invoiceStatement)
+        public string updateInvoiceStatement(InvoiceStatement invoiceStatement)
         {
             string result;
             result = AllStored("U", invoiceStatement);
             return result;
         }
 
-        public string getInvBusinessUnitCustID(InvoiceStatement invoiceStatement)
+        public string getInvCustID()
         {
             string result;
-            result = AllStored("CID", invoiceStatement);
+            InvoiceStatement invoice = new InvoiceStatement();
+            result = AllStored("CID", invoice);
+            return result;
+        }
+
+        public string getInvoiceStatement()
+        {
+            string result;
+            InvoiceStatement invoice = new InvoiceStatement();
+            result = AllStored("SA", invoice);
             return result;
         }
     }

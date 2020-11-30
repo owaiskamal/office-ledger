@@ -37,7 +37,7 @@ namespace office_ledger.Controllers
         [HttpPost]
         public ActionResult insertInvBusinessUnit([FromBody] InvoiceStatement invoiceStat)
         {
-            var result = invoiceStatement.insertInvBusinessUnits(invoiceStat);
+            var result = invoiceStatement.insertInvoiceStatement(invoiceStat);
             if(result == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace office_ledger.Controllers
 
         public ActionResult updateInvBusinessUnit([FromBody] InvoiceStatement upInvStat)
         {
-            var result = invoiceStatement.updateInvBusinessUnits(upInvStat);
+            var result = invoiceStatement.updateInvoiceStatement(upInvStat);
             if(result == null)
             {
                 return NotFound();
@@ -63,11 +63,26 @@ namespace office_ledger.Controllers
             }
         }
 
-        [Route("api/getInvBusinessUnitCID")]
+        [Route("api/getInvCustID")]
         [HttpGet]
-        public ActionResult getInvBusinessUnitCID(InvoiceStatement InvStatCID)
+        public ActionResult getInvBusinessUnitCID()
         {
-            var result = invoiceStatement.getInvBusinessUnitCustID(InvStatCID);
+            var result = invoiceStatement.getInvCustID();
+            if(result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(result);
+            }
+        }
+
+        [Route("api/getInvoiceStatement")]
+        [HttpGet]
+        public ActionResult getInvoiceStatement()
+        {
+            var result = invoiceStatement.getInvoiceStatement();
             if(result == null)
             {
                 return NotFound();
