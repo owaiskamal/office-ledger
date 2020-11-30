@@ -92,5 +92,20 @@ namespace office_ledger.Controllers
                 return Ok(result);
             }
         }
+
+        [Route("api/getInvCostCenters")]
+        [HttpGet]
+        public ActionResult getInvCostCenters()
+        {
+            var result = invoiceStatement.getInvCostCenters();
+            if(result ==null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(result);
+            }
+        }
     }
 }

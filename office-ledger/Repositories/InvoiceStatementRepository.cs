@@ -105,5 +105,15 @@ namespace office_ledger.Repositories
             result = AllStored("SA", invoice);
             return result;
         }
+
+        public string getInvCostCenters()
+        {
+            string result;
+            InvoiceStatement invoice = new InvoiceStatement();
+            result = AllStored("CC", invoice);
+            return result;
+        }
     }
+
+    
 }
