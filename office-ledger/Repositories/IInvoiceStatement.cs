@@ -16,6 +16,8 @@ namespace office_ledger.Repositories
         String getInvCustID();
 
         String getInvoiceStatement();
+
+        String getInvCostCenters();
         
     }
 }
