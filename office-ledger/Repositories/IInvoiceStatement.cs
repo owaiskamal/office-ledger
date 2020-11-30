@@ -9,10 +9,13 @@ namespace office_ledger.Repositories
    public interface IInvoiceStatement
     {
         String getInvBusinessUnits();
-        String insertInvBusinessUnits(InvoiceStatement invoiceStatement);
+        String insertInvoiceStatement(InvoiceStatement invoiceStatement);
 
-        String updateInvBusinessUnits(InvoiceStatement invoiceStatement);
+        String updateInvoiceStatement(InvoiceStatement invoiceStatement);
 
-        String getInvBusinessUnitCustID(InvoiceStatement invoiceStatement);
+        String getInvCustID();
+
+        String getInvoiceStatement();
+        
     }
 }
