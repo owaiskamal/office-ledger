@@ -40,7 +40,6 @@ namespace office_ledger.Repositories
             obj_ORCL.SelectCommand.CommandType = CommandType.StoredProcedure;
             obj_ORCL.SelectCommand.BindByName = true;
             obj_ORCL.SelectCommand.Parameters.Add("p_Cust_Id", customer.p_Cust_Id);
-            obj_ORCL.SelectCommand.Parameters.Add("p_cust_No", customer.p_cust_No);
             obj_ORCL.SelectCommand.Parameters.Add("p_cust_name", customer.p_cust_name);
             obj_ORCL.SelectCommand.Parameters.Add("p_contact_person", customer.p_contact_person);
             obj_ORCL.SelectCommand.Parameters.Add("p_contact_no", customer.p_contact_no);
