@@ -20,7 +20,7 @@ namespace office_ledger.Repositories
         public string getChartOfAccount()
         {
             String result;
-            result = AllRecord("U", null);
+            result = AllRecord("SA", null);
             return result;
         }
 
@@ -37,7 +37,7 @@ namespace office_ledger.Repositories
                 obj_ORCL.SelectCommand.Parameters.Add("p_acc_type", "");
                 obj_ORCL.SelectCommand.Parameters.Add("p_acc_name", "");
                 obj_ORCL.SelectCommand.Parameters.Add("p_user_cd", "");
-                obj_ORCL.SelectCommand.Parameters.Add("p_user_cd", "");
+                obj_ORCL.SelectCommand.Parameters.Add("p_upduser_cd", "");
                 obj_ORCL.SelectCommand.Parameters.Add("p_rowid", "");
                 obj_ORCL.SelectCommand.Parameters.Add("p_action", action);
                 obj_ORCL.SelectCommand.Parameters.Add("p_dataset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
