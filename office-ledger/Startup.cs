@@ -31,6 +31,7 @@ namespace office_ledger
             services.AddTransient<ICostCenter, CostCenterRepository>();
             services.AddTransient<IInvoiceStatement, InvoiceStatementRepository>();
             services.AddTransient<ICustomerMaster, CustomerMasterRepository>();
+            services.AddTransient<IBankAccount, BankAccountRepository>();
             services.AddTransient<IChartOfAccount, ChartOfAccountRepository>();
             services.AddSingleton(Configuration);
             services.AddControllers();
