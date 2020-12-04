@@ -39,7 +39,7 @@ namespace office_ledger.Repositories
             obj_ORCL.SelectCommand.Parameters.Add("p_recno", "");
             obj_ORCL.SelectCommand.Parameters.Add("p_recdt", "");
             obj_ORCL.SelectCommand.Parameters.Add("p_paymode", "");
-            obj_ORCL.SelectCommand.Parameters.Add("p_payref#", "");
+            obj_ORCL.SelectCommand.Parameters.Add("p_payref", "");
             obj_ORCL.SelectCommand.Parameters.Add("p_chequedt", "");
             obj_ORCL.SelectCommand.Parameters.Add("p_totrecamount", "");
             obj_ORCL.SelectCommand.Parameters.Add("p_busunit", "");
@@ -54,7 +54,7 @@ namespace office_ledger.Repositories
             obj_ORCL.SelectCommand.Parameters.Add("p_upddate", "");
             obj_ORCL.SelectCommand.Parameters.Add("p_rowid", "");
             obj_ORCL.SelectCommand.Parameters.Add("P_Action", action);
-            obj_ORCL.SelectCommand.Parameters.Add("p_dataset", "");
+            obj_ORCL.SelectCommand.Parameters.Add("p_dataset", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
                 DataTable dt = new DataTable();
                
                 try
@@ -82,7 +82,7 @@ namespace office_ledger.Repositories
                 obj_ORCL.SelectCommand.Parameters.Add("p_recno", paymentReceipt.p_recno);
                 obj_ORCL.SelectCommand.Parameters.Add("p_recdt", paymentReceipt.p_recdt);
                 obj_ORCL.SelectCommand.Parameters.Add("p_paymode", paymentReceipt.p_paymode);
-                obj_ORCL.SelectCommand.Parameters.Add("p_payref#", paymentReceipt.p_payref);
+                obj_ORCL.SelectCommand.Parameters.Add("p_payref", paymentReceipt.p_payref);
                 obj_ORCL.SelectCommand.Parameters.Add("p_chequedt", paymentReceipt.p_chequedt);
                 obj_ORCL.SelectCommand.Parameters.Add("p_totrecamount", paymentReceipt.p_totrecamount);
                 obj_ORCL.SelectCommand.Parameters.Add("p_busunit", paymentReceipt.p_busunit);
