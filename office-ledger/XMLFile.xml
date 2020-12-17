@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Master>
+    <vochno></vochno>
+    <busunit>KHW</busunit>
+    <vochcode>65653</vochcode>
+    <vochdate>12-12-2020</vochdate>
+    <vochtype>T</vochtype>
+    <particulars>TEST 3 PARTICULAR</particulars>
+    <user_cd>2001</user_cd>
+    <upduser_cd></upduser_cd>
+  </Master>
+  <Details>
+    <coano>1</coano>
+    <costid>KHO</costid>
+    <chqrefno>50</chqrefno>
+    <chqrefdt>12/30/2020</chqrefdt>
+    <dr_amount>100</dr_amount>
+    <cr_amount></cr_amount>
+  </Details>
+  <Details>
+    <coano>2</coano>
+    <costid>LHE</costid>
+    <chqrefno>50</chqrefno>
+    <chqrefdt>12/30/2020</chqrefdt>
+    <dr_amount>100</dr_amount>
+    <cr_amount></cr_amount>
+  </Details>
+  <Details>
+    <coano>3</coano>
+    <costid>KHI</costid>
+    <chqrefno>50</chqrefno>
+    <chqrefdt>12/30/2020</chqrefdt>
+    <dr_amount>100</dr_amount>
+    <cr_amount></cr_amount>
+  </Details>
+  <Details>
+    <coano>4</coano>
+    <costid>ISL</costid>
+    <chqrefno>50</chqrefno>
+    <chqrefdt>12/30/2020</chqrefdt>
+    <dr_amount>100</dr_amount>
+    <cr_amount></cr_amount>
+  </Details>
+</root>

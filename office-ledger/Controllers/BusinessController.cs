@@ -23,16 +23,25 @@ namespace office_ledger.Controllers
         [HttpGet]
         public ActionResult GetBussinesses()
         {
-            var result = businessUnits.GetBusinessUnits();
-            if(result == null)
+            try
             {
-                return NotFound();
+                var result = businessUnits.GetBusinessUnits();
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+
+                    return Ok(result);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                
-                return Ok(result);
+
+                return BadRequest(ex);
             }
+            
         }
         [Route("api/GetBusinessById")]
         [HttpPost]
